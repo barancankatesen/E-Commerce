@@ -11,7 +11,18 @@ namespace E_Commerce.Controllers
         // GET: Home
         public ActionResult Index()
         {
-
+            
+            return View();
+        }
+        public ActionResult Login()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Login(FormCollection frm)
+        {
+            string username = frm.Get("email");
+            string password = frm.Get("password");
 
             return View();
         }
