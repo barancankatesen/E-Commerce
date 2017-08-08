@@ -21,24 +21,24 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
     <script src="@Url.Content("~/Content/js/jquery-2.2.3.min.js")"></script>
     <script src="@Url.Content("~/Content/js/jquery-scrolltofixed-min.js")" type="text/javascript"></script><!-- fixed nav js -->
     <script>
-    $(document).ready(function() {
+        $(document).ready(function () {
 
-        // Dock the header to the top of the window when scrolled past the banner. This is the default behaviour.
+            // Dock the header to the top of the window when scrolled past the banner. This is the default behaviour.
 
-        $('.header-two').scrollToFixed();
-        // previous summary up the page.
+            $('.header-two').scrollToFixed();
+            // previous summary up the page.
 
-        var summaries = $('.summary');
-        summaries.each(function(i) {
-            var summary = $(summaries[i]);
-            var next = summaries[i + 1];
+            var summaries = $('.summary');
+            summaries.each(function (i) {
+                var summary = $(summaries[i]);
+                var next = summaries[i + 1];
 
-            summary.scrollToFixed({
-                marginTop: $('.header-two').outerHeight(true) + 10,
-                zIndex: 999
+                summary.scrollToFixed({
+                    marginTop: $('.header-two').outerHeight(true) + 10,
+                    zIndex: 999
+                });
             });
         });
-    });
     </script>
     <!-- //js -->
     <!-- web-fonts -->
@@ -50,31 +50,40 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
     <script type="text/javascript" src="@Url.Content("~/Content/js/move-top.js")"></script>
     <script type="text/javascript" src="@Url.Content("~/Content/js/easing.js")"></script>
     <script type="text/javascript">
-		jQuery(document).ready(function($) {
-			$(".scroll").click(function(event){
-				event.preventDefault();
-				$('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
-			});
-		});
+        jQuery(document).ready(function ($) {
+            $(".scroll").click(function (event) {
+                event.preventDefault();
+                $('html,body').animate({ scrollTop: $(this.hash).offset().top }, 1000);
+            });
+        });
     </script>
     <!-- //end-smooth-scrolling -->
     <!-- smooth-scrolling-of-move-up -->
     <script type="text/javascript">
-		$(document).ready(function() {
+        $(document).ready(function () {
 
-			var defaults = {
-				containerID: 'toTop', // fading element id
-				containerHoverID: 'toTopHover', // fading element hover id
-				scrollSpeed: 1200,
-				easingType: 'linear'
-			};
+            var defaults = {
+                containerID: 'toTop', // fading element id
+                containerHoverID: 'toTopHover', // fading element hover id
+                scrollSpeed: 1200,
+                easingType: 'linear'
+            };
 
-			$().UItoTop({ easingType: 'easeOutQuart' });
+            $().UItoTop({ easingType: 'easeOutQuart' });
 
-		});
+        });
     </script>
     <!-- //smooth-scrolling-of-move-up -->
-    <style>webkit-keyframes marqueeAnimation-3245509  { 100%  {margin-left:-1527px}}</style>
+    <style>
+        webkit-keyframes marqueeAnimation-3245509 {
+            100%;
+
+        {
+            margin-left: -1527px;
+        }
+
+        }
+    </style>
 </head>
 <body>
     <!-- header -->
@@ -86,36 +95,34 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
             </div>
             <div class="w3ls-header-right">
                 <ul>
+                    @if (Session["AdiSoyadi"] != null && (string)Session["AdiSoyadi"] != "")
+                    {
+                        <li class="dropdown head-dpdn">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user" aria-hidden="true"></i> @Session["AdiSoyadi"]<span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                @if ((string)Session["Authority"] != "Customer")
+                                { <li>@Html.ActionLink("Admin Paneli", "Index", "Admin")</li> }
+                                <li>@Html.ActionLink("Ayarlar", "Config", "Home")</li>
+                                <li>@Html.ActionLink("Siparişlerim", "Orders", "Home")</li>
+                                <li>@Html.ActionLink("Çıkış Yap", "LogOut", "Home")</li>
+                            </ul>
+
+                        </li>
+
+                    }
+                    else
+                    {
+                        <li class="dropdown head-dpdn">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user" aria-hidden="true"></i> Hesap<span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+
+                                <li>@Html.ActionLink("Giriş Yap", "Login", "Home")</li>
+                                <li>@Html.ActionLink("Üye Ol", "SignUp", "Home")</li>
+                            </ul>
+                        </li>
+                    }
                     <li class="dropdown head-dpdn">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user" aria-hidden="true"></i> My Account<span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li>@Html.ActionLink("login", "Login", "Home");</li>
-                            <li><a href="signup.html">Sign Up</a></li>
-                            <li><a href="login.html">My Orders</a></li>
-                            <li><a href="login.html">Wallet</a></li>
-                        </ul>
-                    </li>
-                    <li class="dropdown head-dpdn">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-percent" aria-hidden="true"></i> Today's Deals<span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="offers.html">Cash Back Offers</a></li>
-                            <li><a href="offers.html">Product Discounts</a></li>
-                            <li><a href="offers.html">Special Offers</a></li>
-                        </ul>
-                    </li>
-                    <li class="dropdown head-dpdn">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-gift" aria-hidden="true"></i> Gift Cards<span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="offers.html">Product Gift card</a></li>
-                            <li><a href="offers.html">Occasions Register</a></li>
-                            <li><a href="offers.html">View Balance</a></li>
-                        </ul>
-                    </li>
-                    <li class="dropdown head-dpdn">
-                        <a href="contact.html" class="dropdown-toggle"><i class="fa fa-map-marker" aria-hidden="true"></i> Store Finder</a>
-                    </li>
-                    <li class="dropdown head-dpdn">
-                        <a href="card.html" class="dropdown-toggle"><i class="fa fa-credit-card-alt" aria-hidden="true"></i> Credit Card</a>
+                        <a href="help.html" class="dropdown-toggle"><i class="fa fa-question-circle" aria-hidden="true"></i> Help</a>
                     </li>
                     <li class="dropdown head-dpdn">
                         <a href="help.html" class="dropdown-toggle"><i class="fa fa-question-circle" aria-hidden="true"></i> Help</a>
@@ -944,8 +951,8 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                     <div class="marquee"><div style="width: 100000px; margin-left: 770px; animation: marqueeAnimation-3245509 14.9156s linear 1s infinite running;" class="js-marquee-wrapper"><div class="js-marquee" style="margin-right: 0px; float: left;"><a href="offers.html"> New collections are available here...... <span>Get extra 10% off on everything | no extra taxes </span> <span> Try shipping pass free for 15 days with unlimited</span></a></div></div></div>
                     <script type="text/javascript" src="@Url.Content("~/Content/js/jquery.marquee.min.js")"></script>
                     <script>
-					  $('.marquee').marquee({ pauseOnHover: true });
-					  //sourceURL=pen.js
+                        $('.marquee').marquee({ pauseOnHover: true });
+                        //sourceURL=pen.js
                     </script>
                 </div>
             </div>
@@ -1089,16 +1096,16 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
         w3ls.render();
 
         w3ls.cart.on('w3sb_checkout', function (evt) {
-        	var items, len, i;
+            var items, len, i;
 
-        	if (this.subtotal() > 0) {
-        		items = this.items();
+            if (this.subtotal() > 0) {
+                items = this.items();
 
-        		for (i = 0, len = items.length; i < len; i++) {
-        			items[i].set('shipping', 0);
-        			items[i].set('shipping2', 0);
-        		}
-        	}
+                for (i = 0, len = items.length; i < len; i++) {
+                    items[i].set('shipping', 0);
+                    items[i].set('shipping2', 0);
+                }
+            }
         });
     </script><div id="PPsbmincart"><form method="post" class="sbmincart-empty" action="https://www.paypal.com/cgi-bin/webscr" target="">    <button type="button" class="sbmincart-closer">×</button>    <ul>            </ul>    <div class="sbmincart-footer">                    <p class="sbmincart-empty-text">Your shopping cart is empty</p>            </div>    <input type="hidden" name="cmd" value="_cart">    <input type="hidden" name="upload" value="1">            <input type="hidden" name="bn" value="sbmincart_AddToCart_WPS_US">    </form></div>
     <!-- //cart-js -->
