@@ -11,7 +11,7 @@ namespace E_Commerce.CF
     {
         public Context()
         {
-            Database.Connection.ConnectionString = "server=.;database=DbCommerce;user id=sa;password=123456789?";
+            Database.Connection.ConnectionString = "server=.;database=DbCommerce;user id=sa;password=123";
         }
 
         public DbSet<BaseUser> Users { get; set; }
