@@ -55,7 +55,7 @@ namespace E_Commerce.Controllers
             var ToEditFromDb  =_db.Users.Where(x => x.BaseUserID == Convert.ToInt32(Session["UserID"])).Select(x => new  {x.Name, x.Surname }).FirstOrDefault();
             ToEdit.Name = ToEditFromDb.Name;
             ToEdit.Surname = ToEditFromDb.Surname;
-          
+           
             return View(ToEdit);
         }
 
