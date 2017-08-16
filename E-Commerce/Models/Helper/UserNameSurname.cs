@@ -7,7 +7,7 @@ namespace E_Commerce.Models.Helper
 {
     public class UserNameSurname
     {
-        private object p;
+        
 
        
 

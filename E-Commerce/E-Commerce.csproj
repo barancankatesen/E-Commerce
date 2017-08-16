@@ -400,6 +400,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="CF\Connection.cs" />
     <Compile Include="CF\Context.cs" />
+    <Compile Include="CF\Converter.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
@@ -409,6 +410,7 @@
     <Compile Include="Models\DataModel\BaseUser.cs" />
     <Compile Include="Models\Helper\UserLogin.cs" />
     <Compile Include="Models\Helper\UserNameSurname.cs" />
+    <Compile Include="Models\Helper\UserPassword.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -431,6 +433,9 @@
     <Content Include="Views\Layouts\Admin.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Admin\Settings.cshtml" />
+    <Content Include="Views\Admin\ChangeNameSurname.cshtml" />
+    <Content Include="Views\Admin\ChangePassword.cshtml" />
+    <Content Include="Views\Admin\SuccessPage.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
