@@ -18,7 +18,7 @@
                     <div class="form-group">
 
                         <div>
-                            @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @placeholder = "E-Mail" } })
+                            @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class="form-control" ,@placeholder = "E-Mail" ,@type="email"} })
                             @Html.ValidationMessageFor(model => model.Email)
                         </div>
                     </div>
@@ -59,3 +59,9 @@
         </div>
     </div>
 </div>
+
+
+
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>

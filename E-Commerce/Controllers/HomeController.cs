@@ -17,12 +17,12 @@ namespace E_Commerce.Controllers
 
         public ActionResult Index()
         {
-            
+
             return View();
         }
         public ActionResult Login()
         {
-            if ((string)Session["AdiSoyadi"] !=null&&(string)Session["AdiSoyadi"] !="")
+            if ((string)Session["AdiSoyadi"] != null && (string)Session["AdiSoyadi"] != "")
             {
                 return RedirectToAction("Index", "Home");
             }
@@ -58,6 +58,72 @@ namespace E_Commerce.Controllers
             Session.Remove("UserID");
             Session.Remove("Authority");
             return RedirectToAction("Index", "Home");
+        }
+
+        public ActionResult SignUp()
+        {
+            UserSignUp ToSignUp = new UserSignUp();
+            return View(ToSignUp);
+        }
+        [HttpPost]
+        public ActionResult SignUp(FormCollection frm)
+        {
+            UserSignUp ToConfirm = new UserSignUp();
+            ToConfirm.TermAndConditions = Convert.ToBoolean(frm.Get("TermAndConditions"));
+
+            string ViewPassword = frm.Get("Password");
+            string ViewPasswordAgain = frm.Get("PasswordAgain");
+
+            string ViewName = frm.Get("Name");
+            string ViewSurname = frm.Get("Surname");
+            string ViewMail = frm.Get("EMail");
+            BaseUser ToAdd = new BaseUser();
+            ToAdd.Authority = "UnConfirmed";
+            ToAdd.EMail = ViewMail;
+            ToAdd.Name = ViewName;
+            ToAdd.Password = ViewPassword;
+            ToAdd.Surname = ViewSurname;
+            ToConfirm.Name = ViewName;
+            ToConfirm.Surname = ViewSurname;
+            ToConfirm.EMail = ViewMail;
+            
+            
+            if (ViewPassword != ViewPasswordAgain)
+           
+            {
+                ViewBag.Mesaj = "Şifreleriniz Uyuşmuyor";
+                return View(ToConfirm);
+            }
+
+            if (!ToConfirm.TermAndConditions)
+            {
+                ViewBag.Mesaj = "Sisteme Kayıt Olabilmeniz İçin Kullanıcı Sözleşmesini Onaylamanız Gerekir";
+                return View(ToConfirm);
+            }
+            _db.Users.Add(ToAdd);
+            if (_db.SaveChanges() > 0)
+            {
+                return RedirectToAction("SuccessPage", "Home");
+            }
+            else
+            {
+                ViewBag.Mesaj = "Veritabanı Bağlantısı Sırasında Bir Hata Oluştu";
+            }
+            return View(ToConfirm);
+        }
+
+        public ActionResult SuccessPage()
+        {
+            return View();
+        }
+        public ActionResult TermandConditions()
+        {
+
+            return View();
+        }
+        public ActionResult Help()
+        {
+            return View();
         }
     }
 }

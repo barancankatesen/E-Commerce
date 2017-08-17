@@ -12,17 +12,20 @@ namespace E_Commerce.Models.Helper
 
         [StringLength(maximumLength: 1000, ErrorMessage = "Şifre 3 karakterden az olamaz", MinimumLength = 3),
          DataType(DataType.Password),
-         Display(Name = "Eski Şifrenizi giriniz")
+         Display(Name = "Eski Şifrenizi giriniz"),
+            Required(ErrorMessage = "Lütfen Eski Şifrenizi Giriniz")
             ]
         public string OldPassword { get; set; }
         [StringLength(maximumLength: 1000, ErrorMessage = "Şifre 3 karakterden az olamaz", MinimumLength = 3),
          DataType(DataType.Password),
-         Display(Name = "Yeni Şifrenizi giriniz")
+         Display(Name = "Yeni Şifrenizi giriniz"),
+            Required(ErrorMessage = "Lütfen Yeni Şifrenizi Giriniz")
             ]
         public string NewPassword { get; set; }
         [StringLength(maximumLength: 1000, ErrorMessage = "Şifre 3 karakterden az olamaz", MinimumLength = 3),
          DataType(DataType.Password),
-         Display(Name = "Yeni Şifrenizi Tekrar giriniz")
+         Display(Name = "Yeni Şifrenizi Tekrar giriniz"),
+            Required(ErrorMessage = "Lütfen Yeni Şifrenizi Tekrar Giriniz")
             ]
         public string NewPasswordAgain { get; set; }
     }
